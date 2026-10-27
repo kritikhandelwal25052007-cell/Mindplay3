@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindPlay: Train Your Focus! | Interactive Psychology & Concentration Playground</title>
+  <meta name="description" content="Learn basic psychological concepts related to concentration, attention, memory, and self-regulation through fun, pastel mini-games and practical focus tools." />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="games.css" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#home" class="site-brand" aria-label="MindPlay Home">
+        <div class="brand-icon">🧠</div>
+        <div>
+          <span class="brand-title">MindPlay</span>
+          <span class="brand-tag">Train Your Focus!</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#games" class="nav-link">Mini-Games</a>
+        <a href="#psychology" class="nav-link">Psychology Hub</a>
+        <a href="#tools" class="nav-link">Focus Tools</a>
+        <a href="#coding" class="nav-link">Java Coding</a>
+        <a href="#progress" class="nav-link">My Progress</a>
+      </nav>
+
+      <div class="header-stats">
+        <div class="stat-chip" title="Daily Focus Streak">
+          <span>🔥</span>
+          <span id="header-streak-count">1 day</span>
+        </div>
+        <div class="stat-chip" title="Total Games Played">
+          <span>🎮</span>
+          <span id="header-plays-count">0</span>
+        </div>
+        <button class="audio-btn" id="btn-audio-toggle" title="Toggle audio feedback" aria-label="Toggle audio">
+          <span id="audio-icon">🔔</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main id="main-content" role="main">
+
+    <!-- VIEW 1: HOME PAGE -->
+    <section id="view-home" class="view-section active-view" aria-label="Home">
+      <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-wrapper">
+          <div class="hero-text-col">
+            <div class="hero-pill-badge">
+              <span>🌸 Welcome to Your Focus Playground</span>
+            </div>
+            <h1 class="hero-title">
+              Discover How Your Mind Pays Attention!
+            </h1>
+            <p class="hero-sub">
+              MindPlay is a relaxing, beginner-friendly psychology playground where you can explore attention, memory, and self-control through playful mini-games and evidence-based focus techniques.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#games" class="btn btn-mint btn-large">🎮 Play a Focus Game</a>
+              <a href="#tools" class="btn btn-lavender btn-large">⏱️ Start 25m Timer</a>
+              <a href="#psychology" class="btn btn-ghost">Learn the Science ➔</a>
+            </div>
+          </div>
+
+          <div class="hero-mascot-card">
+            <div class="mascot-avatar">🧠✨</div>
+            <h3 class="mascot-name">Meet Mindy!</h3>
+            <p class="mascot-quote">"Focus isn't about working harder; it's about giving your brain gentle boundaries and frequent restful pauses!"</p>
+          </div>
+        </div>
+
+        <!-- Psychology Fact of the Day Bar -->
+        <div class="daily-fact-card">
+          <div class="fact-icon">💡</div>
+          <div class="fact-content">
+            <span class="fact-tag" id="fact-category">Brain Energy</span>
+            <div class="fact-text" id="fact-text">
+              The human brain consumes about 20% of your body's energy while making up only 2% of your total weight!
+            </div>
+          </div>
+          <button class="btn btn-ghost" id="btn-shuffle-fact" title="Shuffle another psychology fact">🎲 Another Fact</button>
+        </div>
+
+        <!-- Mini-Games Showcase -->
+        <div class="arcade-section">
+          <div class="section-head">
+            <h2>The Focus Arcade 🕹️</h2>
+            <p>Five fun games designed around core cognitive psychology experiments.</p>
+          </div>
+
+          <div class="arcade-grid">
+            <div class="arcade-card">
+              <div class="arcade-card-top">
+                <span class="badge badge-pink">Selective Attention</span>
+                <span class="arcade-time">⏱️ 1–2 min</span>
+              </div>
+              <div class="arcade-icon-title">
+                <span class="arcade-icon">🔍</span>
+                <h3 class="arcade-name">Focus Finder</h3>
+              </div>
+              <p class="arcade-desc">Scan the pastel grid to locate specific target symbols while filtering out distractors.</p>
+              <a href="#game-focus-finder" class="btn btn-pink btn-arcade-play">Play Focus Finder ➔</a>
+            </div>
+
+            <div class="arcade-card">
+              <div class="arcade-card-top">
+                <span class="badge badge-lavender">Sustained Attention</span>
+                <span class="arcade-time">⏱️ 2 min</span>
+              </div>
+              <div class="arcade-icon-title">
+                <span class="arcade-icon">🌟</span>
+                <h3 class="arcade-name">Stay Focused</h3>
+              </div>
+              <p class="arcade-desc">Maintain alertness over a continuous visual stream and tap only when the golden star appears.</p>
+              <a href="#game-stay-focused" class="btn btn-lavender btn-arcade-play">Play Stay Focused ➔</a>
+            </div>
+
+            <div class="arcade-card">
+              <div class="arcade-card-top">
+                <span class="badge badge-blue">Task Switching</span>
+                <span class="arcade-time">⏱️ 2 min</span>
+              </div>
+              <div class="arcade-icon-title">
+                <span class="arcade-icon">🔄</span>
+                <h3 class="arcade-name">Switch It Up</h3>
+              </div>
+              <p class="arcade-desc">Alternate between Color and Shape rules to experience the mental "switch cost".</p>
+              <a href="#game-switch-it-up" class="btn btn-blue btn-arcade-play">Play Switch It Up ➔</a>
+            </div>
+
+            <div class="arcade-card">
+              <div class="arcade-card-top">
+                <span class="badge badge-mint">Inhibitory Control</span>
+                <span class="arcade-time">⏱️ 1–2 min</span>
+              </div>
+              <div class="arcade-icon-title">
+                <span class="arcade-icon">🚦</span>
+                <h3 class="arcade-name">Stop or Go</h3>
+              </div>
+              <p class="arcade-desc">Tap rapidly on green signals, but freeze your impulse immediately when red flashes.</p>
+              <a href="#game-stop-or-go" class="btn btn-mint btn-arcade-play">Play Stop or Go ➔</a>
+            </div>
+
+            <div class="arcade-card">
+              <div class="arcade-card-top">
+                <span class="badge badge-pink">Working Memory</span>
+                <span class="arcade-time">⏱️ 2–3 min</span>
+              </div>
+              <div class="arcade-icon-title">
+                <span class="arcade-icon">🧠</span>
+                <h3 class="arcade-name">Memory Challenge</h3>
+              </div>
+              <p class="arcade-desc">Memorize sequences of cute fruit symbols and recall them in forward or reverse order.</p>
+              <a href="#game-memory-challenge" class="btn btn-pink btn-arcade-play">Play Memory Challenge ➔</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: MINI-GAMES ARCADE -->
+    <section id="view-games" class="view-section" aria-label="Games Arcade">
+      <div class="container py-8">
+        <div class="section-head">
+          <h2>Focus Mini-Games Arcade 🎮</h2>
+          <p>Choose an interactive mini-game and select your preferred difficulty preset.</p>
+        </div>
+
+        <div class="arcade-difficulty-bar">
+          <span style="align-self: center; font-weight: 700; margin-right: 8px;">Select Difficulty:</span>
+          <button class="diff-btn" data-diff="easy">🌱 Easy (Relaxed)</button>
+          <button class="diff-btn active" data-diff="medium">⭐ Medium (Standard)</button>
+          <button class="diff-btn" data-diff="hard">🔥 Hard (Challenge)</button>
+        </div>
+
+        <div id="arcade-cards-grid" class="arcade-grid">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: GAME STAGE -->
+    <section id="view-game-stage" class="view-section" aria-label="Game Stage">
+      <div class="container">
+        <div id="game-mount">
+          <!-- Active game mounts here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: PSYCHOLOGY HUB -->
+    <section id="view-psychology" class="view-section" aria-label="Psychology Hub">
+      <div class="container py-8">
+        <div class="section-head">
+          <h2>The Psychology of Focus & Attention 📚</h2>
+          <p>Simple, friendly explanations of the cognitive mechanisms that guide how you learn, work, and perceive the world.</p>
+        </div>
+
+        <!-- 6 Core Concepts Grid -->
+        <h3 class="font-bold text-xl mb-4 text-center">Six Core Cognitive Faculties</h3>
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <div class="concept-header">
+              <span class="concept-icon">🎯</span>
+              <h4 class="concept-title">1. Selective Attention</h4>
+            </div>
+            <p class="concept-body">
+              Your brain's ability to shine an attentional spotlight on one relevant sensory stream while ignoring irrelevant noise.
+            </p>
+            <div class="concept-example">
+              <strong>Everyday Example:</strong> Focusing on your friend's voice in a bustling café while tuning out background music and espresso machines (the <em>Cocktail Party Effect</em>).
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-header">
+              <span class="concept-icon">⏳</span>
+              <h4 class="concept-title">2. Sustained Attention</h4>
+            </div>
+            <p class="concept-body">
+              The capacity to maintain continuous focus and vigilance on a single task over an extended period without drifting.
+            </p>
+            <div class="concept-example">
+              <strong>Everyday Example:</strong> Reading a 20-page textbook chapter or listening to a lecture for 35 minutes without reaching for your phone.
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-header">
+              <span class="concept-icon">🔄</span>
+              <h4 class="concept-title">3. Attentional Switching</h4>
+            </div>
+            <p class="concept-body">
+              The executive flexibility to disengage from one task rule and re-engage with another when goals change.
+            </p>
+            <div class="concept-example">
+              <strong>Everyday Example:</strong> Alternating between copying math formulas from a whiteboard and solving problems on your notebook page.
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-header">
+              <span class="concept-icon">🛑</span>
+              <h4 class="concept-title">4. Inhibitory Control</h4>
+            </div>
+            <p class="concept-body">
+              The mental braking mechanism that stops impulsive reactions, habitual behaviors, and automatic distractions.
+            </p>
+            <div class="concept-example">
+              <strong>Everyday Example:</strong> Feeling your phone vibrate in your pocket during a meeting, but choosing not to pull it out.
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-header">
+              <span class="concept-icon">🗂️</span>
+              <h4 class="concept-title">5. Working Memory</h4>
+            </div>
+            <p class="concept-body">
+              The temporary mental workspace that holds and manipulates information for a few seconds during problem-solving.
+            </p>
+            <div class="concept-example">
+              <strong>Everyday Example:</strong> Mentally calculating 24 × 3 in your head or remembering a 6-digit verification code while switching browser tabs.
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-header">
+              <span class="concept-icon">🌐</span>
+              <h4 class="concept-title">6. Situational Awareness</h4>
+            </div>
+            <p class="concept-body">
+              Perceiving environmental elements, understanding what they mean right now, and projecting what will happen next.
+            </p>
+            <div class="concept-example">
+              <strong>Everyday Example:</strong> Scanning the road while cycling: noting a parked car's brake lights and anticipating an opening door.
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Focus Techniques Toolkit -->
+        <div class="section-head mt-12">
+          <h2>5 Evidence-Based Focus Techniques 🛠️</h2>
+          <p>Practical routines you can start using today to protect your attention from exhaustion.</p>
+        </div>
+
+        <div class="techniques-list">
+          <div class="technique-box">
+            <div class="tech-icon-circle">1️⃣</div>
+            <div>
+              <h4 class="tech-title">The One-Task Rule (Monotasking)</h4>
+              <div class="tech-rule">Rule: Never open two active cognitive tasks at the exact same moment.</div>
+              <p class="tech-desc">
+                When people think they are multitasking, they are actually forcing their prefrontal cortex to rapidly switch back and forth. This consumes up to 40% more mental energy and causes twice as many errors.
+              </p>
+              <div class="tech-action-step">
+                <strong>Try It Now:</strong> Close all browser tabs except the single one you need right now. Full-screen your work document!
+              </div>
+            </div>
+          </div>
+
+          <div class="technique-box">
+            <div class="tech-icon-circle">🛑</div>
+            <div>
+              <h4 class="tech-title">The STOP Technique (Mindful Reset)</h4>
+              <div class="tech-rule">S = Stop • T = Take a breath • O = Observe • P = Proceed</div>
+              <p class="tech-desc">
+                When you notice your mind daydreaming or reaching for social media, pause immediately. Take one conscious breath, observe the urge without self-criticism, and proceed back to your priority.
+              </p>
+              <div class="tech-action-step">
+                <strong>Try It Now:</strong> Practice the guided breathing exercise in our <a href="#tools" class="text-pink font-bold">Focus Tools section</a>!
+              </div>
+            </div>
+          </div>
+
+          <div class="technique-box">
+            <div class="tech-icon-circle">⏱️</div>
+            <div>
+              <h4 class="tech-title">Timeboxing & Focus Intervals</h4>
+              <div class="tech-rule">Sprint: 25 minutes • Rest: 5 minutes</div>
+              <p class="tech-desc">
+                Your brain's sustained vigilance reservoir is biological and finite. Working in structured sprints (like the Pomodoro Technique) keeps cognitive fatigue from accumulating.
+              </p>
+              <div class="tech-action-step">
+                <strong>Try It Now:</strong> Use our customizable Pomodoro timer in the tools section.
+              </div>
+            </div>
+          </div>
+
+          <div class="technique-box">
+            <div class="tech-icon-circle">📝</div>
+            <div>
+              <h4 class="tech-title">Scheduled Worry Time</h4>
+              <div class="tech-rule">Postpone intrusive thoughts to a dedicated 15-minute afternoon slot.</div>
+              <p class="tech-desc">
+                Trying to suppress worrying thoughts only makes them bounce back stronger (the <em>White Bear Effect</em>). Instead, jot the worry on a notepad and tell yourself: "I will think about this at 4:30 PM."
+              </p>
+              <div class="tech-action-step">
+                <strong>Try It Now:</strong> Keep a "Worry & Ideas" blank sticky note next to your keyboard while studying.
+              </div>
+            </div>
+          </div>
+
+          <div class="technique-box">
+            <div class="tech-icon-circle">🛡️</div>
+            <div>
+              <h4 class="tech-title">The Distraction-Proof Environment</h4>
+              <div class="tech-rule">Out of sight, out of working memory.</div>
+              <p class="tech-desc">
+                Research at the University of Texas showed that even having a silent smartphone face-down on your desk drains working memory capacity because your brain expends energy inhibiting the urge to check it.
+              </p>
+              <div class="tech-action-step">
+                <strong>Try It Now:</strong> Put your smartphone in another room or inside a drawer during focus sprints!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: INTERACTIVE FOCUS TOOLS -->
+    <section id="view-tools" class="view-section" aria-label="Focus Tools">
+      <div class="container py-8">
+        <div class="section-head">
+          <h2>Interactive Focus Tools ⏱️</h2>
+          <p>Hands-on instruments to structure your work, breathe mindfully, and audit environmental interruptions.</p>
+        </div>
+
+        <div class="tools-grid">
+          <!-- Tool 1: Pomodoro Timer -->
+          <div class="tool-card">
+            <div class="tool-header">
+              <h3 class="tool-title">Customizable Pomodoro Timer</h3>
+              <p class="tool-sub">Structured work sprints & rejuvenating break intervals.</p>
+            </div>
+
+            <div class="pomo-mode-tabs">
+              <button class="pomo-mode-btn active" data-mode="work">Work Sprint</button>
+              <button class="pomo-mode-btn" data-mode="shortBreak">Short Break (5m)</button>
+              <button class="pomo-mode-btn" data-mode="longBreak">Long Break (15m)</button>
+            </div>
+
+            <div class="pomo-ring-container">
+              <svg class="pomo-svg" viewBox="0 0 200 200">
+                <circle class="pomo-circle-bg" cx="100" cy="100" r="88" />
+                <circle class="pomo-circle-progress" id="pomo-progress-circle" cx="100" cy="100" r="88" />
+              </svg>
+              <div class="pomo-ring-text">
+                <span class="pomo-time" id="pomo-timer-text">25:00</span>
+                <span class="pomo-status-tag tag-work" id="pomo-mode-banner">🧠 Deep Focus Sprint</span>
+              </div>
+            </div>
+
+            <div class="pomo-controls-row">
+              <button class="btn btn-mint btn-large" id="btn-pomo-start">▶️ Start Focus</button>
+              <button class="btn btn-ghost" id="btn-pomo-reset">↺ Reset</button>
+            </div>
+
+            <div class="slider-setting-row">
+              <label for="pomo-work-slider">Sprint Duration:</label>
+              <span id="pomo-slider-val" class="font-bold text-mint">25 min</span>
+              <input type="range" id="pomo-work-slider" min="15" max="50" step="5" value="25" style="width: 140px;" />
+            </div>
+          </div>
+
+          <!-- Tool 2: STOP Technique Activity -->
+          <div class="tool-card">
+            <div class="tool-header">
+              <h3 class="tool-title">Guided STOP Reset</h3>
+              <p class="tool-sub">A 60-second mindfulness break when you feel distracted.</p>
+            </div>
+
+            <div class="stop-step-card active-step" id="stop-step-1">
+              <div class="stop-letter-pill">S</div>
+              <h4 class="text-center font-bold mb-2">Step 1: STOP What You're Doing</h4>
+              <p class="text-center text-slate text-sm mb-4">Take your hands off the keyboard or phone. Notice that your mind has wandered into autopilot.</p>
+              <div class="text-center">
+                <button class="btn btn-pink" id="btn-stop-next">I Have Stopped ➔</button>
+              </div>
+            </div>
+
+            <div class="stop-step-card" id="stop-step-2">
+              <div class="stop-letter-pill" style="background: var(--pastel-lavender); color: #4c1d95;">T</div>
+              <h4 class="text-center font-bold mb-2">Step 2: Take a Breath</h4>
+              <p class="text-center text-slate text-sm">Follow the gentle circle below for one complete calming breath.</p>
+              <div class="breathing-orb-wrapper">
+                <div class="breathing-orb" id="breathing-circle"></div>
+              </div>
+              <div class="breathing-label" id="breathing-label">Press button to begin breathing cycle</div>
+              <div class="text-center mt-4">
+                <button class="btn btn-lavender" id="btn-breathe-start">🌬️ Start Breath Cycle (10s)</button>
+              </div>
+            </div>
+
+            <div class="stop-step-card" id="stop-step-3">
+              <div class="stop-letter-pill" style="background: var(--pastel-blue); color: #0c4a6e;">O</div>
+              <h4 class="text-center font-bold mb-2">Step 3: Observe Your Distraction</h4>
+              <p class="text-center text-slate text-sm mb-4">What pulled your attention away just now?</p>
+              <div class="space-y-2 mb-4">
+                <label class="check-item"><input type="radio" name="distract_type" checked /> Phone notification or social media urge</label>
+                <label class="check-item"><input type="radio" name="distract_type" /> Daydreaming or wandering thoughts</label>
+                <label class="check-item"><input type="radio" name="distract_type" /> Physical fatigue, hunger, or tension</label>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-blue" onclick="window.app.tools.advanceStopStep()">Observation Complete ➔</button>
+              </div>
+            </div>
+
+            <div class="stop-step-card" id="stop-step-4">
+              <div class="stop-letter-pill" style="background: var(--pastel-mint); color: #064e3b;">P</div>
+              <h4 class="text-center font-bold mb-2">Step 4: Proceed With Intention</h4>
+              <p class="text-center text-slate text-sm mb-4">Name the single task you will work on right now:</p>
+              <input type="text" id="stop-intention-input" placeholder="e.g. Finish reading paragraph 3..." style="width: 100%; padding: 12px; border-radius: 12px; border: 2px solid var(--border-color); margin-bottom: 16px; font-family: inherit;" />
+              <div class="text-center">
+                <button class="btn btn-mint" onclick="window.app.tools.advanceStopStep()">Return to Focused Flow ✨</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tool 3: Distraction Checklist Audit -->
+          <div class="tool-card">
+            <div class="tool-header">
+              <h3 class="tool-title">Distraction Checklist Audit</h3>
+              <p class="tool-sub">Identify potential attentional leaks in your environment.</p>
+            </div>
+
+            <div class="checklist-category-title">📱 Digital Distractions</div>
+            <label class="check-item"><input type="checkbox" class="distraction-checkbox" value="phone_visible" /> Phone is visible on desk or in direct line of sight</label>
+            <label class="check-item"><input type="checkbox" class="distraction-checkbox" value="tabs_open" /> More than 5 unrelated browser tabs open</label>
+            <label class="check-item"><input type="checkbox" class="distraction-checkbox" value="notifications_on" /> App or email desktop notifications active</label>
+
+            <div class="checklist-category-title">🪑 Physical Environment</div>
+            <label class="check-item"><input type="checkbox" class="distraction-checkbox" value="desk_clutter" /> Clutter, trash, or unorganized papers on desk</label>
+            <label class="check-item"><input type="checkbox" class="distraction-checkbox" value="noisy_ambient" /> Unpredictable conversational noise nearby</label>
+
+            <div class="checklist-category-title">💭 Internal State</div>
+            <label class="check-item"><input type="checkbox" class="distraction-checkbox" value="unclear_goal" /> Working without a clear definition of "done"</label>
+            <label class="check-item"><input type="checkbox" class="distraction-checkbox" value="low_energy" /> Feeling hungry, dehydrated, or sleep-deprived</label>
+
+            <div class="audit-score-bar-box">
+              <div class="flex justify-between text-sm font-bold">
+                <span>Distraction Vulnerability:</span>
+                <span id="audit-score-pct" class="font-mono text-pink">0%</span>
+              </div>
+              <div class="audit-bar-track">
+                <div class="audit-bar-fill" id="audit-bar-fill"></div>
+              </div>
+              <div class="audit-feedback text-mint" id="audit-feedback-text">
+                Check any items above that currently apply to see your focus score!
+              </div>
+            </div>
+
+            <div class="text-center mt-4">
+              <button class="btn btn-ghost" id="btn-reset-audit">Clear Checklist</button>
+            </div>
+          </div>
+
+          <!-- Tool 4: Daily Goals Tracker -->
+          <div class="tool-card">
+            <div class="tool-header">
+              <h3 class="tool-title">Daily Focus Goals</h3>
+              <p class="tool-sub">Keep your focus streak alive with daily micro-habits.</p>
+            </div>
+
+            <div class="goal-item-row">
+              <div>
+                <strong>Pomodoro Focus Sprints</strong>
+                <div class="goal-track"><div class="goal-fill" id="goal-pomo-fill"></div></div>
+              </div>
+              <span class="font-mono font-bold text-mint" id="goal-pomo-progress">0 / 3</span>
+            </div>
+
+            <div class="goal-item-row">
+              <div>
+                <strong>Focus Mini-Games Played</strong>
+                <div class="goal-track"><div class="goal-fill" id="goal-game-fill"></div></div>
+              </div>
+              <span class="font-mono font-bold text-blue" id="goal-game-progress">0 / 2</span>
+            </div>
+
+            <div class="goal-item-row">
+              <div>
+                <strong>STOP Mindfulness Practice</strong>
+                <div class="text-xs text-slate">Breathe & reset once daily</div>
+              </div>
+              <span id="goal-stop-status" class="text-slate">Not yet today</span>
+            </div>
+
+            <div class="text-center mt-6">
+              <div class="text-sm text-slate mb-2">Current Active Streak</div>
+              <div class="font-bold text-3xl text-pink" id="streak-count-val">1 day</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 6: JAVA CODING CORNER -->
+    <section id="view-coding" class="view-section" aria-label="Java Coding Corner">
+      <div class="container py-8">
+        <div class="section-head">
+          <h2>Java Coding Corner 💻</h2>
+          <p>
+            Learn the programming foundations behind focus games! See how simple Java code uses variables, loops, conditions, methods, and classes.
+          </p>
+        </div>
+
+        <div class="coding-container">
+          <div class="java-lesson-tabs" role="tablist">
+            <button class="java-lesson-tab active" data-lesson="variables">1. Variables & Stats</button>
+            <button class="java-lesson-tab" data-lesson="conditions">2. Conditions (if/else)</button>
+            <button class="java-lesson-tab" data-lesson="loops">3. Loops & Timers</button>
+            <button class="java-lesson-tab" data-lesson="methods">4. Methods (Calculators)</button>
+            <button class="java-lesson-tab" data-lesson="classes">5. Classes (Player Model)</button>
+          </div>
+
+          <div class="mb-4">
+            <h3 id="java-lesson-title" class="text-xl font-bold mb-2">1. Variables & Data Types: Storing Focus Stats</h3>
+            <p id="java-lesson-desc" class="text-slate text-sm">Variables hold game state values in memory: player scores (int), reaction time (double), and game status (boolean).</p>
+          </div>
+
+          <div class="code-editor-box">
+            <div class="editor-header-bar">
+              <div class="mac-dots">
+                <span class="mac-dot dot-red"></span>
+                <span class="mac-dot dot-yellow"></span>
+                <span class="mac-dot dot-green"></span>
+              </div>
+              <span class="font-mono text-xs">MindPlayGame.java</span>
+              <button class="btn btn-ghost" id="btn-copy-java" style="padding: 4px 10px; font-size: 0.75rem; color: #fff;">📋 Copy Java Code</button>
+            </div>
+
+            <pre class="java-code-pre"><code id="java-code-snippet">public class FocusStats {
+    public static void main(String[] args) {
+        // Primitive variable types in Java
+        int playerScore = 85;             // Whole numbers
+        double reactionTimeMs = 342.8;     // Decimals (milliseconds)
+        boolean isFocusActive = true;      // true or false
+        char difficultyGrade = 'A';        // Single character
+        String playerName = "Mindy";       // Text string
+
+        System.out.println("Player: " + playerName);
+        System.out.println("Score: " + playerScore + " pts");
+        System.out.println("Speed: " + reactionTimeMs + " ms");
+        System.out.println("Vigilance Active: " + isFocusActive);
+    }
+}</code></pre>
+
+            <div class="terminal-box">
+              <div class="flex justify-between items-center mb-2">
+                <span class="terminal-title">🖥️ Java Console Output Simulation:</span>
+                <button class="btn btn-mint" id="btn-run-java" style="padding: 4px 14px; font-size: 0.78rem;">▶️ Run Simulation</button>
+              </div>
+              <div class="terminal-output" id="java-terminal-output">Click "Run Simulation" above to execute this Java code!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 7: MY PROGRESS & BADGES -->
+    <section id="view-progress" class="view-section" aria-label="Progress">
+      <div class="container py-8">
+        <div class="section-head">
+          <h2>My Focus Progress & Badges 🏆</h2>
+          <p>Track your unlocked achievements, game history, and mindful habits.</p>
+        </div>
+
+        <h3 class="font-bold text-xl mb-4">Unlocked Badges</h3>
+        <div class="badges-grid">
+          <div class="badge-item locked" id="badge-firstPlay">
+            <span class="badge-icon-huge">🌱</span>
+            <div class="badge-meta">
+              <h4>First Step</h4>
+              <p>Played your first focus mini-game</p>
+            </div>
+          </div>
+
+          <div class="badge-item locked" id="badge-eagleEye">
+            <span class="badge-icon-huge">🔍</span>
+            <div class="badge-meta">
+              <h4>Eagle Eye</h4>
+              <p>Scored 80+ in Focus Finder</p>
+            </div>
+          </div>
+
+          <div class="badge-item locked" id="badge-laserFocus">
+            <span class="badge-icon-huge">🌟</span>
+            <div class="badge-meta">
+              <h4>Laser Focus</h4>
+              <p>Scored 85+ in Stay Focused</p>
+            </div>
+          </div>
+
+          <div class="badge-item locked" id="badge-switchWizard">
+            <span class="badge-icon-huge">🔄</span>
+            <div class="badge-meta">
+              <h4>Switch Wizard</h4>
+              <p>Scored 80+ in Switch It Up</p>
+            </div>
+          </div>
+
+          <div class="badge-item locked" id="badge-brakeMaster">
+            <span class="badge-icon-huge">🚦</span>
+            <div class="badge-meta">
+              <h4>Brake Master</h4>
+              <p>90%+ inhibition in Stop or Go</p>
+            </div>
+          </div>
+
+          <div class="badge-item locked" id="badge-memoryChampion">
+            <span class="badge-icon-huge">🧠</span>
+            <div class="badge-meta">
+              <h4>Memory Champion</h4>
+              <p>Recalled 6+ items in Memory Challenge</p>
+            </div>
+          </div>
+
+          <div class="badge-item locked" id="badge-zenBreathe">
+            <span class="badge-icon-huge">🌬️</span>
+            <div class="badge-meta">
+              <h4>Zen Master</h4>
+              <p>Completed STOP mindful breathing</p>
+            </div>
+          </div>
+
+          <div class="badge-item locked" id="badge-pomodoroStar">
+            <span class="badge-icon-huge">⏱️</span>
+            <div class="badge-meta">
+              <h4>Pomodoro Star</h4>
+              <p>Completed 2+ Pomodoro work sprints</p>
+            </div>
+          </div>
+
+          <div class="badge-item locked" id="badge-mindfulAllRounder">
+            <span class="badge-icon-huge">👑</span>
+            <div class="badge-meta">
+              <h4>Focus Polymath</h4>
+              <p>Played all 5 focus mini-games</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center mt-12 mb-4">
+          <h3 class="font-bold text-xl">Recent Game History</h3>
+          <button class="btn btn-ghost" id="btn-clear-all-data" style="color: #dc2626; border-color: #fca5a5;">Reset Local History</button>
+        </div>
+
+        <div class="table-container">
+          <table class="history-table" role="table">
+            <thead>
+              <tr>
+                <th>Game Name</th>
+                <th>Difficulty</th>
+                <th>Score</th>
+                <th>Accuracy</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="history-table-body">
+              <!-- Populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Clinical & Educational Disclaimer -->
+        <div class="p-6 bg-white rounded-2xl border-2 border-amber-200 mt-8 text-sm text-slate-600">
+          <h4 class="font-bold text-amber-800 mb-2">ℹ️ Educational & Scientific Notice:</h4>
+          <p>
+            All games, scores, and activities on <strong>MindPlay</strong> are designed strictly for educational exploration, self-awareness, and playful skill practice. They are <strong>informal activities</strong> and do NOT constitute clinical neuropsychological assessments, medical diagnostics, or treatments for Attention Deficit Hyperactivity Disorder (ADHD), executive dysfunction, or cognitive disorders. We do not claim that playing these mini-games produces permanent increases in general intelligence or cures clinical inattention.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Clear History Confirmation Modal -->
+  <div class="modal-backdrop" id="reset-modal" role="dialog" aria-modal="true" aria-labelledby="modal-reset-title">
+    <div class="modal-card">
+      <div style="font-size: 3rem; margin-bottom: 12px;">🗑️</div>
+      <h3 id="modal-reset-title" class="font-bold text-xl mb-2">Reset Local Progress?</h3>
+      <p class="text-slate text-sm mb-6">
+        This will clear your local game history, streak, and unlocked badges on this browser. This cannot be undone.
+      </p>
+      <div class="flex justify-center gap-4">
+        <button class="btn btn-ghost" id="btn-cancel-reset">Cancel</button>
+        <button class="btn btn-pink" id="btn-confirm-reset">Yes, Reset All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg font-heading">MindPlay</span>
+          </div>
+          <p class="text-slate text-sm max-w-sm">
+            A playful, pastel educational website exploring cognitive psychology, attention training, working memory, and evidence-based focus techniques.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-3 text-sm uppercase text-slate-400">Quick Navigation</h4>
+          <ul class="space-y-2 text-sm text-slate-600 list-none">
+            <li><a href="#games">5 Focus Mini-Games</a></li>
+            <li><a href="#psychology">Psychology Hub</a></li>
+            <li><a href="#tools">Pomodoro & STOP Tools</a></li>
+            <li><a href="#coding">Java Coding Corner</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-3 text-sm uppercase text-slate-400">Psychology Basics</h4>
+          <ul class="space-y-2 text-sm text-slate-600 list-none">
+            <li>Selective & Sustained Attention</li>
+            <li>Inhibitory Control (Go/No-Go)</li>
+            <li>Task Switching & Switch Cost</li>
+            <li>Working Memory (Cowan's 4 Chunks)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; MindPlay: Train Your Focus! • Built with HTML5, CSS3, & Vanilla JavaScript</span>
+        <span>Educational Psychology Playground • 100% Private Local Storage</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="storage.js"></script>
+  <script src="audio.js"></script>
+  <script src="focus-finder.js"></script>
+  <script src="stay-focused.js"></script>
+  <script src="switch-it-up.js"></script>
+  <script src="stop-or-go.js"></script>
+  <script src="memory-challenge.js"></script>
+  <script src="tools.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
